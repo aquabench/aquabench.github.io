@@ -31,13 +31,29 @@ and delete the amber "not live yet" notice above the cards once all three are pu
 
 ## Logo
 
-Commit the logo as `assets/logo.png` and the hero picks it up automatically — no HTML edit
-needed. Until that file exists, the inline SVG mark is shown instead (the `<img>` `onerror`
-handler removes itself and unhides `#markFallback`), which costs one 404 in the console.
+The hero uses `assets/logo.png` — the mark cropped to its circle, white background replaced
+with transparency, downscaled to 512px and palette-quantized (125 KB, down from 291 KB
+unquantized).
 
-The source image does **not** need a transparent background: `img.mark` is clipped with
-`border-radius:50%`, so a circular illustration on a white square frame loses its white
-corners cleanly. If you ever swap in artwork that is *not* circular, drop that rule.
+To regenerate it from a new export:
+
+```bash
+python3 tools/make-logo.py path/to/logo-export.png   # -> assets/logo.png
+```
+
+The script finds the circular artwork by its non-white bounding box, so the source can be a
+plain screenshot on a white page. The original export is preserved in git history at commit
+`d4a342e`.
+
+If `assets/logo.png` is ever missing, the hero falls back to an inline SVG mark: the `<img>`
+`onerror` handler removes itself and unhides `#markFallback`. Two details that fallback
+depends on — the SVG is declared *before* the `<img>` so it is already parsed when the error
+fires, and the reveal uses `removeAttribute('hidden')` because `hidden` is an `HTMLElement`
+IDL property that does nothing when assigned on an `SVGElement`.
+
+`img.mark` is also clipped with `border-radius:50%`, which keeps the circle crisp and means
+a non-transparent square export would still render correctly. Drop that rule if you ever
+switch to artwork that is not circular.
 
 ## Citation
 
