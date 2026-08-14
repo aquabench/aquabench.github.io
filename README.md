@@ -31,8 +31,13 @@ and delete the amber "not live yet" notice above the cards once all three are pu
 
 ## Logo
 
-The hero currently uses an inline SVG mark. To use the real logo, add `assets/logo.png`
-and replace the `<svg class="mark">` block with `<img class="mark" src="assets/logo.png" alt="AquaBench logo">`.
+Commit the logo as `assets/logo.png` and the hero picks it up automatically — no HTML edit
+needed. Until that file exists, the inline SVG mark is shown instead (the `<img>` `onerror`
+handler removes itself and unhides `#markFallback`), which costs one 404 in the console.
+
+The source image does **not** need a transparent background: `img.mark` is clipped with
+`border-radius:50%`, so a circular illustration on a white square frame loses its white
+corners cleanly. If you ever swap in artwork that is *not* circular, drop that rule.
 
 ## Citation
 

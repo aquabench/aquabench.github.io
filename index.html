@@ -74,6 +74,15 @@
   .hero > *{position:relative}
 
   .mark{display:block;margin:0 auto 22px;width:104px;height:104px}
+  /* author display:block would otherwise beat the hidden attribute */
+  [hidden]{display:none !important}
+  /* The artwork is a circle inscribed in a square frame, so clipping to a circle
+     drops the white corners whether or not the source file has transparency. */
+  img.mark{
+    object-fit:cover;
+    border-radius:50%;
+    box-shadow:0 0 0 2px rgba(255,255,255,.25), 0 8px 28px rgba(0,0,0,.35);
+  }
 
   h1.title{
     margin:0;
@@ -304,10 +313,10 @@
 <header class="hero">
   <div class="wrap">
 
-    <!-- To use the real logo instead of this inline mark, drop the file at
-         assets/logo.png and replace the whole <svg> below with:
-         <img class="mark" src="assets/logo.png" alt="AquaBench logo"> -->
-    <svg class="mark" viewBox="0 0 120 120" role="img" aria-label="AquaBench logo">
+    <!-- Drop the real logo at assets/logo.png and it appears automatically.
+         Until that file exists, the inline SVG mark is shown instead. The SVG is
+         declared first so it is already parsed when the img error fires. -->
+    <svg id="markFallback" class="mark" hidden viewBox="0 0 120 120" role="img" aria-label="AquaBench logo">
       <defs>
         <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#5fd6e8"/>
@@ -352,6 +361,9 @@
       </g>
       <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
     </svg>
+
+    <img class="mark" src="assets/logo.png" alt="AquaBench logo"
+         onerror="this.remove();var f=document.getElementById('markFallback');if(f)f.removeAttribute('hidden')">
 
     <h1 class="title">AQUABENCH</h1>
 
