@@ -172,15 +172,23 @@
     gap:12px;
   }
   .ds{
-    padding:14px 16px;
+    display:flex;flex-direction:column;
+    padding:14px 16px 0;
     background:var(--panel);
     border:1px solid var(--line);
     border-left:3px solid var(--teal);
     border-radius:10px;
+    overflow:hidden;
   }
   .ds b{display:block;font-size:.98rem;font-weight:700}
   .ds span{display:block;margin-top:2px;font-size:.82rem;color:var(--ink-mute)}
   .ds em{display:block;margin-top:6px;font-size:.84rem;font-style:normal;color:var(--ink-dim)}
+  .ds .lic{align-self:flex-start;margin-top:8px;font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-mute)}
+  .ds .lic:hover{color:var(--ink);border-color:rgba(46,197,192,.45);text-decoration:none}
+  .ds-links{display:flex;margin:12px -16px 0;margin-top:auto;padding-top:12px;border-top:0}
+  .ds-links a{flex:1;padding:9px 0;text-align:center;font-size:.8rem;font-weight:600;color:var(--cyan);border-top:1px solid var(--line)}
+  .ds-links a + a{border-left:1px solid var(--line)}
+  .ds-links a:hover{background:rgba(46,197,192,.12);color:var(--ink);text-decoration:none}
 
   /* ---------- models ---------- */
   .grid-vfm{
@@ -561,20 +569,58 @@
     </p>
 
     <div class="grid-ds">
-      <div class="ds"><b>CoralScapes</b><span>CS · 39 classes</span><em>Coral reef health assessment</em><a class="ref" href="https://arxiv.org/abs/2503.20000" target="_blank" rel="noopener">Paper ↗</a></div>
-      <div class="ds"><b>Common Objects UW</b><span>COU · 24 classes</span><em>Pool, lake and ocean visibility</em><a class="ref" href="https://arxiv.org/abs/2502.20651" target="_blank" rel="noopener">Paper ↗</a></div>
-      <div class="ds"><b>DeepFish</b><span>DF · 2 classes</span><em>Fish across marine habitats</em><a class="ref" href="https://doi.org/10.1038/s41598-020-71639-x" target="_blank" rel="noopener">Paper ↗</a></div>
-      <div class="ds"><b>Looking for Seagrass</b><span>L4S · 2 classes</span><em>Seagrass habitat mapping</em><a class="ref" href="https://doi.org/10.1109/OCEANSKOBE.2018.8559302" target="_blank" rel="noopener">Paper ↗</a></div>
-      <div class="ds"><b>LIACI</b><span>LIACI · 11 classes</span><em>ROV ship-hull inspection</em><a class="ref" href="https://doi.org/10.1109/JOE.2022.3219129" target="_blank" rel="noopener">Paper ↗</a></div>
-      <div class="ds"><b>SeaClear</b><span>SC · 41 classes</span><em>Debris from cleanup missions</em><a class="ref" href="https://doi.org/10.1038/s41597-024-03759-2" target="_blank" rel="noopener">Paper ↗</a></div>
-      <div class="ds"><b>SUIM</b><span>SUIM · 8 classes</span><em>Divers, wrecks, seafloor terrain</em><a class="ref" href="https://arxiv.org/abs/2004.01241" target="_blank" rel="noopener">Paper ↗</a></div>
-      <div class="ds"><b>TrashCan</b><span>TC · 23 classes</span><em>Deep-sea marine debris</em><a class="ref" href="https://arxiv.org/abs/2007.08097" target="_blank" rel="noopener">Paper ↗</a></div>
-      <div class="ds"><b>UIIS10K</b><span>UIIS10K · 11 classes</span><em>Harmonized label taxonomy</em><a class="ref" href="https://arxiv.org/abs/2505.15581" target="_blank" rel="noopener">Paper ↗</a></div>
+      <div class="ds">
+        <b>CoralScapes</b><span>CS · 39 classes</span><em>Coral reef health assessment</em>
+        <a class="lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener" title="Original license">Apache-2.0</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2503.20000" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://huggingface.co/datasets/EPFL-ECEO/coralscapes" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/coralscapes" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>Common Objects UW</b><span>COU · 24 classes</span><em>Pool, lake and ocean visibility</em>
+        <a class="lic" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" title="Original license">CC BY-SA 4.0</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2502.20651" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://doi.org/10.13020/1vwe-2707" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/cou" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>DeepFish</b><span>DF · 2 classes</span><em>Fish across marine habitats</em>
+        <a class="lic" href="https://github.com/alzayats/DeepFish/blob/master/LICENSE" target="_blank" rel="noopener" title="Original license">MIT</a>
+        <div class="ds-links"><a href="https://doi.org/10.1038/s41598-020-71639-x" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://github.com/alzayats/DeepFish" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/deepfish" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>Looking for Seagrass</b><span>L4S · 2 classes</span><em>Seagrass habitat mapping</em>
+        <a class="lic" href="https://github.com/EnviewFulda/LookingForSeagrass/blob/master/LICENSE" target="_blank" rel="noopener" title="Original license">BSD-2-Clause</a>
+        <div class="ds-links"><a href="https://doi.org/10.1109/OCEANSKOBE.2018.8559302" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://github.com/EnviewFulda/LookingForSeagrass" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/l4s" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>LIACi</b><span>LIACi · 11 classes</span><em>ROV ship-hull inspection</em>
+        <a class="lic" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener" title="Original license">CC BY-NC-SA 4.0</a>
+        <div class="ds-links"><a href="https://doi.org/10.1109/JOE.2022.3219129" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://data.sintef.no/product/dp-9e112cec-3a59-4b58-86b3-ecb1f2878c60" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/liaci" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>SeaClear</b><span>SC · 41 classes</span><em>Debris from cleanup missions</em>
+        <a class="lic" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" title="Original license">CC BY 4.0</a>
+        <div class="ds-links"><a href="https://doi.org/10.1038/s41597-024-03759-2" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://doi.org/10.4121/4F1DFF25-E157-4399-A5D4-478055461689.V1" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/seaclear" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>SUIM</b><span>SUIM · 8 classes</span><em>Divers, wrecks, seafloor terrain</em>
+        <a class="lic" href="https://github.com/xahidbuffon/SUIM/blob/master/LICENSE" target="_blank" rel="noopener" title="Original license">MIT</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2004.01241" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://irvlab.cs.umn.edu/resources/suim-dataset" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/suim" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>TrashCan</b><span>TC · 23 classes</span><em>Deep-sea marine debris</em>
+        <a class="lic" href="http://www.godac.jamstec.go.jp/darwin/explain/1/e#condition" target="_blank" rel="noopener" title="Original license">Non-commercial</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2007.08097" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://conservancy.umn.edu/items/6dd6a960-c44a-4510-a679-efb8c82ebfb7" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/trashcan" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>UIIS10K</b><span>UIIS10K · 11 classes</span><em>Harmonized label taxonomy</em>
+        <a class="lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener" title="Original license">Apache-2.0</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2505.15581" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://github.com/LiamLian0727/UIIS10K" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/uiis10k" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
     </div>
     <p class="lede" style="margin-top:16px;font-size:.86rem;color:var(--ink-mute)">
-      Class counts include the background class. Preprocessing does not alter the licenses of the
-      underlying datasets — each retains its original terms, and use of the full suite requires
-      compliance with all of them.
+      Class counts include the background class. AQUABENCH does not relicense the underlying data:
+      each dataset keeps its original license and copyright. LIACi and TrashCan are non-commercial;
+      commercial use of TrashCan requires permission from JAMSTEC, and attribution to JAMSTEC (J-EDI)
+      is always required. COU and LIACi are share-alike. Please cite the original dataset
+      publications in addition to AQUABENCH.
     </p>
   </div>
 </section>
