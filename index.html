@@ -172,15 +172,23 @@
     gap:12px;
   }
   .ds{
-    padding:14px 16px;
+    display:flex;flex-direction:column;
+    padding:14px 16px 0;
     background:var(--panel);
     border:1px solid var(--line);
     border-left:3px solid var(--teal);
     border-radius:10px;
+    overflow:hidden;
   }
   .ds b{display:block;font-size:.98rem;font-weight:700}
   .ds span{display:block;margin-top:2px;font-size:.82rem;color:var(--ink-mute)}
   .ds em{display:block;margin-top:6px;font-size:.84rem;font-style:normal;color:var(--ink-dim)}
+  .ds .lic{align-self:flex-start;margin-top:8px;font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-mute)}
+  .ds .lic:hover{color:var(--ink);border-color:rgba(46,197,192,.45);text-decoration:none}
+  .ds-links{display:flex;margin:12px -16px 0;margin-top:auto;padding-top:12px;border-top:0}
+  .ds-links a{flex:1;padding:9px 0;text-align:center;font-size:.8rem;font-weight:600;color:var(--cyan);border-top:1px solid var(--line)}
+  .ds-links a + a{border-left:1px solid var(--line)}
+  .ds-links a:hover{background:rgba(46,197,192,.12);color:var(--ink);text-decoration:none}
 
   /* ---------- models ---------- */
   .grid-vfm{
@@ -202,6 +210,10 @@
     border:1px solid var(--line);color:var(--ink-dim);background:rgba(255,255,255,.03);
   }
   .pill.big{background:rgba(46,197,192,.16);border-color:rgba(46,197,192,.45);color:#9ff0ec}
+
+  /* ---------- paper refs on dataset / model cards ---------- */
+  .ref{display:inline-block;margin-top:8px;font-size:.8rem;font-weight:600;color:var(--cyan)}
+  .vfm .refs{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:4px}
 
   /* ---------- findings ---------- */
   .finds{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
@@ -453,6 +465,59 @@
   </div>
 </header>
 
+<!-- ============ RESOURCES ============ -->
+<section id="resources">
+  <div class="wrap">
+    <h2>Paper, data &amp; code<span class="dot">.</span></h2>
+    <p class="lede">The harmonized dataset and the benchmark code are public now.</p>
+
+    <div class="notice">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v6l3.5 2"/>
+      </svg>
+      <span>The paper link is not live yet — it goes public at the conference.</span>
+    </div>
+
+    <div class="links">
+
+      <span class="link" aria-disabled="true">
+        <span class="soon">Coming soon</span>
+        <span class="ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/>
+          </svg>
+        </span>
+        <b>Paper</b>
+        <span>The full write-up: benchmark design, harmonization details, evaluation protocol, and results.</span>
+      </span>
+
+      <a class="link" href="https://huggingface.co/datasets/TorbenGl/AQUABENCH" target="_blank" rel="noopener">
+        <span class="ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5.5" rx="8" ry="3"/>
+            <path d="M4 5.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
+            <path d="M4 11.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
+          </svg>
+        </span>
+        <b>Dataset</b>
+        <span>The nine harmonized datasets in a standardized format on Hugging Face, plus the preprocessing pipeline to rebuild them from source.</span>
+      </a>
+
+      <a class="link" href="https://github.com/aquabench/aquabench" target="_blank" rel="noopener">
+        <span class="ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 17l-5-5 5-5"/><path d="M16 7l5 5-5 5"/>
+          </svg>
+        </span>
+        <b>Code</b>
+        <span>The benchmark repository on GitHub — encoders, heads, tasks, evaluation protocol, and configs to reproduce every run.</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============ OVERVIEW ============ -->
 <section id="overview">
   <div class="wrap">
@@ -504,20 +569,58 @@
     </p>
 
     <div class="grid-ds">
-      <div class="ds"><b>CoralScapes</b><span>CS · 39 classes</span><em>Coral reef health assessment</em></div>
-      <div class="ds"><b>Common Objects UW</b><span>COU · 24 classes</span><em>Pool, lake and ocean visibility</em></div>
-      <div class="ds"><b>DeepFish</b><span>DF · 2 classes</span><em>Fish across marine habitats</em></div>
-      <div class="ds"><b>Looking for Seagrass</b><span>L4S · 2 classes</span><em>Seagrass habitat mapping</em></div>
-      <div class="ds"><b>LIACI</b><span>LIACI · 11 classes</span><em>ROV ship-hull inspection</em></div>
-      <div class="ds"><b>SeaClear</b><span>SC · 41 classes</span><em>Debris from cleanup missions</em></div>
-      <div class="ds"><b>SUIM</b><span>SUIM · 8 classes</span><em>Divers, wrecks, seafloor terrain</em></div>
-      <div class="ds"><b>TrashCan</b><span>TC · 23 classes</span><em>Deep-sea marine debris</em></div>
-      <div class="ds"><b>UIIS10K</b><span>UIIS10K · 11 classes</span><em>Harmonized label taxonomy</em></div>
+      <div class="ds">
+        <b>CoralScapes</b><span>CS · 39 classes</span><em>Coral reef health assessment</em>
+        <a class="lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener" title="Original license">Apache-2.0</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2503.20000" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://huggingface.co/datasets/EPFL-ECEO/coralscapes" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/coralscapes" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>Common Objects UW</b><span>COU · 24 classes</span><em>Pool, lake and ocean visibility</em>
+        <a class="lic" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" title="Original license">CC BY-SA 4.0</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2502.20651" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://doi.org/10.13020/1vwe-2707" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/cou" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>DeepFish</b><span>DF · 2 classes</span><em>Fish across marine habitats</em>
+        <a class="lic" href="https://github.com/alzayats/DeepFish/blob/master/LICENSE" target="_blank" rel="noopener" title="Original license">MIT</a>
+        <div class="ds-links"><a href="https://doi.org/10.1038/s41598-020-71639-x" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://github.com/alzayats/DeepFish" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/deepfish" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>Looking for Seagrass</b><span>L4S · 2 classes</span><em>Seagrass habitat mapping</em>
+        <a class="lic" href="https://github.com/EnviewFulda/LookingForSeagrass/blob/master/LICENSE" target="_blank" rel="noopener" title="Original license">BSD-2-Clause</a>
+        <div class="ds-links"><a href="https://doi.org/10.1109/OCEANSKOBE.2018.8559302" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://github.com/EnviewFulda/LookingForSeagrass" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/l4s" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>LIACi</b><span>LIACi · 11 classes</span><em>ROV ship-hull inspection</em>
+        <a class="lic" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener" title="Original license">CC BY-NC-SA 4.0</a>
+        <div class="ds-links"><a href="https://doi.org/10.1109/JOE.2022.3219129" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://data.sintef.no/product/dp-9e112cec-3a59-4b58-86b3-ecb1f2878c60" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/liaci" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>SeaClear</b><span>SC · 41 classes</span><em>Debris from cleanup missions</em>
+        <a class="lic" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" title="Original license">CC BY 4.0</a>
+        <div class="ds-links"><a href="https://doi.org/10.1038/s41597-024-03759-2" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://doi.org/10.4121/4F1DFF25-E157-4399-A5D4-478055461689.V1" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/seaclear" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>SUIM</b><span>SUIM · 8 classes</span><em>Divers, wrecks, seafloor terrain</em>
+        <a class="lic" href="https://github.com/xahidbuffon/SUIM/blob/master/LICENSE" target="_blank" rel="noopener" title="Original license">MIT</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2004.01241" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://irvlab.cs.umn.edu/resources/suim-dataset" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/suim" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>TrashCan</b><span>TC · 23 classes</span><em>Deep-sea marine debris</em>
+        <a class="lic" href="http://www.godac.jamstec.go.jp/darwin/explain/1/e#condition" target="_blank" rel="noopener" title="Original license">Non-commercial</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2007.08097" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://conservancy.umn.edu/items/6dd6a960-c44a-4510-a679-efb8c82ebfb7" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/trashcan" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
+      <div class="ds">
+        <b>UIIS10K</b><span>UIIS10K · 11 classes</span><em>Harmonized label taxonomy</em>
+        <a class="lic" href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener" title="Original license">Apache-2.0</a>
+        <div class="ds-links"><a href="https://arxiv.org/abs/2505.15581" target="_blank" rel="noopener" title="Original publication">Paper</a><a href="https://github.com/LiamLian0727/UIIS10K" target="_blank" rel="noopener" title="Original dataset download">Source</a><a href="https://huggingface.co/datasets/TorbenGl/AQUABENCH/viewer/uiis10k" target="_blank" rel="noopener" title="Preprocessed AQUABENCH subset on Hugging Face">Subset</a></div>
+      </div>
     </div>
     <p class="lede" style="margin-top:16px;font-size:.86rem;color:var(--ink-mute)">
-      Class counts include the background class. Preprocessing does not alter the licenses of the
-      underlying datasets — each retains its original terms, and use of the full suite requires
-      compliance with all of them.
+      Class counts include the background class. AQUABENCH does not relicense the underlying data:
+      each dataset keeps its original license and copyright. LIACi and TrashCan are non-commercial;
+      commercial use of TrashCan requires permission from JAMSTEC, and attribution to JAMSTEC (J-EDI)
+      is always required. COU and LIACi are share-alike. Please cite the original dataset
+      publications in addition to AQUABENCH.
     </p>
   </div>
 </section>
@@ -532,14 +635,14 @@
     </p>
 
     <div class="grid-vfm">
-      <div class="vfm"><b>DINOv3</b><div class="sizes"><span class="pill">ViT-B</span><span class="pill big">ViT-7B</span></div></div>
-      <div class="vfm"><b>EVA-02</b><div class="sizes"><span class="pill">ViT-B</span><span class="pill big">ViT-L</span></div></div>
-      <div class="vfm"><b>Franca</b><div class="sizes"><span class="pill">ViT-B</span><span class="pill big">ViT-g</span></div></div>
-      <div class="vfm"><b>RADIO</b><div class="sizes"><span class="pill">v3 ViT-B</span><span class="pill big">v4 ViT-H</span></div></div>
-      <div class="vfm"><b>V-JEPA 2.1</b><div class="sizes"><span class="pill">ViT-B</span><span class="pill big">ViT-g</span></div></div>
+      <div class="vfm"><b>DINOv3</b><div class="sizes"><span class="pill">ViT-B</span><span class="pill big">ViT-7B</span></div><div class="refs"><a class="ref" href="https://arxiv.org/abs/2508.10104" target="_blank" rel="noopener">Paper ↗</a></div></div>
+      <div class="vfm"><b>EVA-02</b><div class="sizes"><span class="pill">ViT-B</span><span class="pill big">ViT-L</span></div><div class="refs"><a class="ref" href="https://arxiv.org/abs/2303.11331" target="_blank" rel="noopener">Paper ↗</a></div></div>
+      <div class="vfm"><b>Franca</b><div class="sizes"><span class="pill">ViT-B</span><span class="pill big">ViT-g</span></div><div class="refs"><a class="ref" href="https://arxiv.org/abs/2507.14137" target="_blank" rel="noopener">Paper ↗</a></div></div>
+      <div class="vfm"><b>RADIO</b><div class="sizes"><span class="pill">v3 ViT-B</span><span class="pill big">v4 ViT-H</span></div><div class="refs"><a class="ref" href="https://arxiv.org/abs/2312.06709" target="_blank" rel="noopener">AM-RADIO ↗</a><a class="ref" href="https://arxiv.org/abs/2601.17237" target="_blank" rel="noopener">C-RADIOv4 ↗</a></div></div>
+      <div class="vfm"><b>V-JEPA 2.1</b><div class="sizes"><span class="pill">ViT-B</span><span class="pill big">ViT-g</span></div><div class="refs"><a class="ref" href="https://arxiv.org/abs/2603.14482" target="_blank" rel="noopener">Paper ↗</a></div></div>
     </div>
     <p class="lede" style="margin-top:16px;font-size:.86rem;color:var(--ink-mute)">
-      A fully fine-tuned ResNet-50 with a UPerNet decoder is included throughout as a supervised
+      A fully fine-tuned <a href="https://doi.org/10.1109/CVPR.2016.90" target="_blank" rel="noopener">ResNet-50</a> with a <a href="https://arxiv.org/abs/1807.10221" target="_blank" rel="noopener">UPerNet</a> decoder is included throughout as a supervised
       reference point.
     </p>
   </div>
@@ -568,61 +671,6 @@
         <h3>Underwater is still hard</h3>
         <p>Even the best results reach only 0.28 mIoU on SeaClear and 0.32 on LIACI, and weak classes are not simply the rare ones — frequently seen classes fail too.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ RESOURCES ============ -->
-<section id="resources">
-  <div class="wrap">
-    <h2>Paper, data &amp; code<span class="dot">.</span></h2>
-    <p class="lede">Everything below is prepared and will be released together.</p>
-
-    <div class="notice">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <circle cx="12" cy="12" r="9"/><path d="M12 7v6l3.5 2"/>
-      </svg>
-      <span>These links are not live yet — they go public at the conference.</span>
-    </div>
-
-    <div class="links">
-
-      <span class="link" aria-disabled="true">
-        <span class="soon">Coming soon</span>
-        <span class="ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/>
-          </svg>
-        </span>
-        <b>Paper</b>
-        <span>The full write-up: benchmark design, harmonization details, evaluation protocol, and results.</span>
-      </span>
-
-      <span class="link" aria-disabled="true">
-        <span class="soon">Coming soon</span>
-        <span class="ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <ellipse cx="12" cy="5.5" rx="8" ry="3"/>
-            <path d="M4 5.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
-            <path d="M4 11.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
-          </svg>
-        </span>
-        <b>Dataset</b>
-        <span>The nine harmonized datasets in a standardized format, plus the preprocessing pipeline to rebuild them from source.</span>
-      </span>
-
-      <span class="link" aria-disabled="true">
-        <span class="soon">Coming soon</span>
-        <span class="ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 17l-5-5 5-5"/><path d="M16 7l5 5-5 5"/>
-          </svg>
-        </span>
-        <b>Code</b>
-        <span>The benchmark repository — encoders, heads, tasks, evaluation protocol, and configs to reproduce every run.</span>
-      </span>
-
     </div>
   </div>
 </section>
